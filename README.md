@@ -1,121 +1,127 @@
-# VulnScan
+# VulnScan - Advanced Network Vulnerability Scanner
 
-## Description
-**VulnScan** is a powerful tool designed to scan a range of ports on a target, identify open ports, associated services, and search for known vulnerabilities linked to those services. This project combines performance and simplicity for cybersecurity professionals and enthusiasts.
+![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Status](https://img.shields.io/badge/status-active-success.svg)
 
----
+VulnScan is a powerful asynchronous network vulnerability scanner that combines port scanning, service detection, and vulnerability analysis using multiple security APIs.
 
 ## Features
-- **Ultra-Fast Asynchronous Scanning**: Scans entire port ranges (1 to 65535) using the power of `asyncio`.
-- **Service Detection**: Matches open ports with their known services.
-- **Vulnerability Search**: Queries a public API (like Vulners) to fetch CVEs associated with the identified services.
-- **Dynamic CLI Interface**: A user-friendly and colorful command-line interface.
 
----
+- 🚀 **Asynchronous Port Scanning**: Fast and efficient scanning of multiple ports simultaneously
+- 🔍 **Service Detection**: Detailed service fingerprinting using Nmap integration
+- 🛡️ **Vulnerability Analysis**: Integration with multiple security APIs:
+  - Vulners
+  - Shodan
+  - NVD (National Vulnerability Database)
+- 📊 **Real-time Progress Tracking**: Visual progress bars and status updates
+- 📝 **Comprehensive Reporting**: Detailed reports in both text and JSON formats
+- 🎨 **Modern CLI Interface**: Color-coded output and interactive menus
+- 🔐 **Secure API Key Management**: Encrypted storage of API credentials
+
+## Prerequisites
+
+- Python 3.8 or higher
+- Nmap installed on your system
+- API keys for enhanced functionality (optional):
+  - Vulners API key
+  - Shodan API key
+  - Censys API key
 
 ## Installation
 
-1. **Clone the GitHub Repository**:
-   ```bash
-   git clone https://github.com/0xtheghost/VulnScan.git
-   ```
-
-2. **Navigate to the Project Directory**:
-   ```bash
-   cd VulnScan
-   ```
-
-3. **Install Python Dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
----
-
-## Usage
-1. **Run the Main Script**:
-   ```bash
-   python vulnscan.py
-   ```
-
-2. **Provide Required Information**:
-   - Target IP address or domain
-   - Port range to scan (default: 1 to 65535)
-
-3. **View Results**:
-   - Open ports
-   - Detected services
-   - Known vulnerabilities (CVEs)
-
-### Example Execution
-```
-Enter target IP address: 192.168.1.1
-Enter start port (default 1): 1
-Enter end port (default 65535): 1024
-
-[+] Scanning in progress...
-
-[+] Results:
-+------+--------+---------+---------------------------+
-| Port | Status | Service | Known Vulnerabilities    |
-+------+--------+---------+---------------------------+
-|  80  | Open   |  http   | CVE-2023-XXXXX, ...      |
-| 443  | Open   |  https  | None                     |
-+------+--------+---------+---------------------------+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/vulnscan.git
+cd vulnscan
 ```
 
----
-
-## Project Structure
-```
-.
-├── vulnscan.py              # Main program file
-├── requirements.txt         # Python dependencies list
-└── README.md                # Project documentation
-```
-
----
-
-## Dependencies
-- **Python** >= 3.7
-- Required Python Modules:
-  - asyncio
-  - colorama
-  - prettytable
-  - requests
-  - aiohttp
-
-Install the dependencies with the following command:
+2. Install required packages:
 ```bash
 pip install -r requirements.txt
 ```
 
----
+3. Install Nmap if not already present:
+- Linux: `sudo apt-get install nmap`
+- macOS: `brew install nmap`
+- Windows: Download and install from [nmap.org](https://nmap.org/download.html)
 
-## Contribution
-Contributions are welcome!
+## Usage
 
-1. **Fork the project**
-2. **Create a branch for your changes**:
-   ```bash
-   git checkout -b feature/my-feature
-   ```
-3. **Commit your changes**:
-   ```bash
-   git commit -m "Add a new feature"
-   ```
-4. **Push your changes**:
-   ```bash
-   git push origin feature/my-feature
-   ```
-5. **Open a pull request**
+1. Start the scanner:
+```bash
+python vulnscan.py
+```
 
----
+2. Configure API keys (optional but recommended):
+- The tool will prompt you to configure API keys on first run
+- Keys are stored securely using encryption
+
+3. Enter scan parameters:
+- Target IP address
+- Port range (optional, defaults to 1-65535)
+
+4. View results:
+- Real-time scan progress
+- Color-coded vulnerability alerts
+- Detailed service information
+- Comprehensive vulnerability reports
+
+## Configuration
+
+API keys can be configured through the interactive menu or manually in the config file:
+
+```yaml
+# config/api_config.yaml
+vulners_api_key: "your_encrypted_key"
+shodan_api_key: "your_encrypted_key"
+censys_api_key: "your_encrypted_key"
+```
+
+## Output Examples
+
+The scanner provides various output formats:
+
+1. Real-time CLI output with progress tracking:
+```
+[12:34:56] ✓ Port 80 is open
+[12:34:57] ⚠ Port 80 (http) has 3 critical vulnerabilities!
+```
+
+2. Summary table of findings
+3. Detailed text report: `scan_report_<ip>_<timestamp>.txt`
+4. JSON export: `scan_results_<ip>_<timestamp>.json`
+
+## Security Considerations
+
+- Ensure you have permission to scan the target system
+- Store API keys securely
+- Use responsibly and in compliance with applicable laws and regulations
+- Consider rate limiting when scanning multiple targets
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## License
-This project is licensed under the MIT License. See the `LICENSE` file for details.
 
----
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Acknowledgments
-Special thanks to all open-source libraries and the Python community for their support and tools that make this project possible!
+
+- The Nmap Project for port scanning capabilities
+- Vulners, Shodan, and NVD for vulnerability data
+- All contributors and security researchers
+
+## Contact
+
+- GitHub: [0xtheghost](https://github.com/0xtheghost)
+- Discord: [0xchatblanc](https://discord.com/users/714807042648571995)
+
+## Disclaimer
+
+This tool is intended for legal security auditing and research purposes only. Users are responsible for ensuring they have proper authorization before scanning any systems or networks.
