@@ -119,7 +119,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Contact
 
-- GitHub: [0xtheghost](https://github.com/0xchatblanc)
+- GitHub: [0xchatblanc](https://github.com/0xchatblanc)
 - Discord: [0xchatblanc](https://discord.com/users/714807042648571995)
 
 ## Disclaimer
